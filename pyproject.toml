@@ -1,0 +1,58 @@
+[project]
+name = "qorpo_world_test_task"
+version = "0.1.0"
+description = "Test task for Qorpo.World"
+authors = [
+    {name = "Dmitry Takmakov", email = "digitalaudiotape5000@gmail.com"},
+]
+dependencies = [
+    "aiohttp>=3.9.4",
+    "ccxt>=4.2.96",
+    "Brotli>=1.1.0",
+    "SQLAlchemy>=2.0.29",
+    "asyncpg>=0.29.0",
+    "pydantic>=2.7.0",
+    "pydantic-settings>=2.2.1",
+    "alembic>=1.13.1",
+    "gunicorn>=21.2.0",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[project.optional-dependencies]
+local = [
+    "pre-commit>=3.7.0",
+]
+[tool.pdm]
+distribution = false
+
+[tool.isort]
+src_paths = ["src"]
+line_length = 120
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+use_parentheses = true
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+target-version = ['py311']
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )
+)
+'''
